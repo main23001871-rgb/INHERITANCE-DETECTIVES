@@ -1,0 +1,3027 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Inheritance Detectives</title>
+
+<style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f4f6fb;
+
+    color: #222;
+
+}
+
+.container {
+
+    max-width: 1000px;
+
+    margin: 30px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.08);
+
+}
+
+h1 {
+
+    text-align: center;
+
+    margin-bottom: 5px;
+
+}
+
+h2 {
+
+    margin-top: 0;
+
+}
+
+.subtitle {
+
+    text-align: center;
+
+    color: #666;
+
+    margin-bottom: 30px;
+
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 30px;
+
+}
+
+.nav-button {
+
+    padding: 11px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    background: #e8ebf2;
+
+    color: #333;
+
+    font-size: 15px;
+
+}
+
+.nav-button.active {
+
+    background: #333;
+
+    color: white;
+
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section {
+
+    display: none;
+
+}
+
+.section.active {
+
+    display: block;
+
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.main-button {
+
+    display: block;
+
+    margin: 20px auto;
+
+    padding: 13px 25px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #333;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+}
+
+.main-button:hover {
+
+    opacity: 0.85;
+
+}
+
+.main-button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+}
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.login-box {
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+}
+
+.login-box input {
+
+    width: 80%;
+
+    max-width: 450px;
+
+    padding: 14px;
+
+    font-size: 18px;
+
+    border: 2px solid #aaa;
+
+    border-radius: 9px;
+
+    text-align: center;
+
+}
+
+.login-box input:focus {
+
+    outline: none;
+
+    border-color: #333;
+
+}
+
+/* =========================================================
+   INSTRUCTION BOX
+========================================================= */
+
+.instruction-box {
+
+    background: #eef3ff;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    line-height: 1.6;
+
+}
+
+/* =========================================================
+   SIMULATION
+========================================================= */
+
+.parents {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+
+}
+
+.parent-box {
+
+    background: #f1f3f8;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    width: 280px;
+
+    text-align: center;
+
+}
+
+.parent-box h3 {
+
+    margin-top: 0;
+
+}
+
+select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    border: 1px solid #aaa;
+
+    font-size: 17px;
+
+    background: white;
+
+}
+
+/* =========================================================
+   PREDICTION
+========================================================= */
+
+.prediction-box {
+
+    background: #fff8dc;
+
+    border: 1px solid #eadb99;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    margin-top: 25px;
+
+}
+
+.prediction-grid {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+.prediction-item {
+
+    text-align: center;
+
+}
+
+.prediction-item label {
+
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 5px;
+
+}
+
+.prediction-item input {
+
+    width: 120px;
+
+    padding: 10px;
+
+    border-radius: 7px;
+
+    border: 1px solid #aaa;
+
+    font-size: 16px;
+
+}
+
+/* =========================================================
+   CASE FILE
+========================================================= */
+
+.progress {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+}
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 12px;
+
+    background: #ddd;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+.progress-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #333;
+
+    transition: width 0.4s;
+
+}
+
+.case-header {
+
+    text-align: center;
+
+}
+
+.case-number {
+
+    color: #777;
+
+    font-size: 14px;
+
+}
+
+.case-title {
+
+    font-size: 28px;
+
+    margin: 10px 0;
+
+}
+
+.attempts {
+
+    font-size: 22px;
+
+    margin: 15px;
+
+}
+
+.case-box {
+
+    background: #f7f1ff;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+}
+
+.case-question {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+}
+
+/* =========================================================
+   CASE IMAGE
+========================================================= */
+
+.case-image-container {
+
+    width: 100%;
+
+    text-align: center;
+
+    margin: 10px 0 25px 0;
+
+}
+
+.case-image {
+
+    display: block;
+
+    max-width: 100%;
+
+    width: auto;
+
+    max-height: 350px;
+
+    margin: 0 auto;
+
+    border-radius: 12px;
+
+    object-fit: contain;
+
+}
+
+/* =========================================================
+   PUNNETT SQUARE
+========================================================= */
+
+.punnett-wrapper {
+
+    margin: 30px auto;
+
+    text-align: center;
+
+}
+
+.punnett-table {
+
+    border-collapse: collapse;
+
+    margin: 20px auto;
+
+}
+
+.punnett-table th,
+.punnett-table td {
+
+    width: 100px;
+
+    height: 80px;
+
+    border: 2px solid #555;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+}
+
+.punnett-table th {
+
+    background: #e9edf5;
+
+    font-size: 22px;
+
+}
+
+.punnett-table td {
+
+    background: white;
+
+}
+
+.allele-input {
+
+    width: 70px;
+
+    height: 45px;
+
+    text-align: center;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    border: 2px solid #aaa;
+
+    border-radius: 7px;
+
+    text-transform: none;
+
+}
+
+.allele-input:focus {
+
+    outline: none;
+
+    border-color: #333;
+
+}
+
+.cell-correct {
+
+    background: #dff5e3 !important;
+
+    border-color: #5ca968 !important;
+
+}
+
+.cell-wrong {
+
+    background: #fde2e2 !important;
+
+    border-color: #d95353 !important;
+
+}
+
+/* =========================================================
+   QUESTION
+========================================================= */
+
+.question-box {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin-top: 25px;
+
+}
+
+.options {
+
+    margin-top: 15px;
+
+}
+
+.option {
+
+    display: block;
+
+    padding: 13px;
+
+    margin: 10px 0;
+
+    border: 2px solid #ddd;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    background: white;
+
+}
+
+.option:hover {
+
+    background: #f1f3f8;
+
+}
+
+.option input {
+
+    margin-right: 10px;
+
+}
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.success {
+
+    background: #e5f6e9;
+
+    border: 1px solid #9bd0a3;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+}
+
+.error {
+
+    background: #fde8e8;
+
+    border: 1px solid #e1a1a1;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+}
+
+.warning {
+
+    background: #fff5d9;
+
+    border: 1px solid #e5c76d;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+}
+
+/* =========================================================
+   RESULTS
+========================================================= */
+
+.summary {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+
+}
+
+.card {
+
+    background: #f1f3f8;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    min-width: 260px;
+
+}
+
+.card h3 {
+
+    margin-top: 0;
+
+}
+
+/* =========================================================
+   COMPLETION
+========================================================= */
+
+.completion {
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+}
+
+.completion h2 {
+
+    font-size: 34px;
+
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+
+    margin-top: 35px;
+
+}
+
+.hidden {
+
+    display: none !important;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- =========================================================
+     LOGIN
+========================================================= -->
+
+<div
+id="studentLogin"
+class="section active">
+
+<div class="login-box">
+
+<h1>
+🧬 Inheritance Detectives
+</h1>
+
+<h2>
+The Patterns of Inheritance
+</h2>
+
+<p>
+
+Welcome, Detective!
+
+</p>
+
+<p>
+
+Enter your full name before
+beginning the mission.
+
+</p>
+
+<input
+type="text"
+id="studentName"
+placeholder="Enter your full name"
+autocomplete="off"
+>
+
+<button
+class="main-button"
+onclick="startMission()">
+
+🚀 Start Mission
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<div
+id="navigation"
+class="navigation hidden">
+
+<button
+class="nav-button active"
+onclick="showSection('simulation')">
+
+🧪 Simulation Lab
+
+</button>
+
+<button
+class="nav-button"
+onclick="openCases()">
+
+🕵️ Case Files
+
+</button>
+
+</div>
+
+
+<!-- =========================================================
+     SIMULATION LAB
+========================================================= -->
+
+<div
+id="simulation"
+class="section">
+
+<h2>
+🧪 Simulation Lab
+</h2>
+
+<div class="instruction-box">
+
+<strong>Mission:</strong>
+
+Practice building a Punnett square before
+solving the case files.
+
+<br><br>
+
+Choose the genotype of each parent.
+
+Then predict the possible offspring
+genotypes.
+
+</div>
+
+<div class="parents">
+
+<div class="parent-box">
+
+<h3>
+Parent 1
+</h3>
+
+<select id="parent1">
+
+<option value="RR">
+RR
+</option>
+
+<option value="Rr" selected>
+Rr
+</option>
+
+<option value="rr">
+rr
+</option>
+
+</select>
+
+</div>
+
+
+<div class="parent-box">
+
+<h3>
+Parent 2
+</h3>
+
+<select id="parent2">
+
+<option value="RR">
+RR
+</option>
+
+<option value="Rr" selected>
+Rr
+</option>
+
+<option value="rr">
+rr
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+<button
+class="main-button"
+onclick="startPrediction()">
+
+🔍 Start Prediction
+
+</button>
+
+
+<div
+id="predictionBox"
+class="prediction-box hidden">
+
+<h3>
+Before revealing the result...
+</h3>
+
+<p>
+
+Cross:
+
+<strong id="predictionCross">
+</strong>
+
+</p>
+
+<div class="prediction-grid">
+
+<div class="prediction-item">
+
+<label>
+RR (%)
+</label>
+
+<input
+type="number"
+id="predictRR"
+min="0"
+max="100"
+>
+
+</div>
+
+<div class="prediction-item">
+
+<label>
+Rr (%)
+</label>
+
+<input
+type="number"
+id="predictRr"
+min="0"
+max="100"
+>
+
+</div>
+
+<div class="prediction-item">
+
+<label>
+rr (%)
+</label>
+
+<input
+type="number"
+id="predictrr"
+min="0"
+max="100"
+>
+
+</div>
+
+</div>
+
+<button
+class="main-button"
+onclick="revealSimulation()">
+
+🔓 Reveal Result
+
+</button>
+
+</div>
+
+<div id="simulationResult">
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     CASE FILES
+========================================================= -->
+
+<div
+id="cases"
+class="section">
+
+<div class="progress">
+
+<strong>
+Case Progress
+</strong>
+
+<p id="progressText">
+Case 1 of 5
+</p>
+
+<div class="progress-bar">
+
+<div
+id="progressFill"
+class="progress-fill">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="case-header">
+
+<div
+id="caseNumber"
+class="case-number">
+
+CASE FILE #01
+
+</div>
+
+<div
+id="caseTitle"
+class="case-title">
+
+Purple Flowers
+
+</div>
+
+<div
+id="attempts"
+class="attempts">
+
+❤️ ❤️ ❤️
+
+</div>
+
+</div>
+
+
+<div class="case-box">
+
+<div class="case-image-container">
+
+<img
+id="caseImage"
+class="case-image"
+alt="Case image">
+
+</div>
+
+<div
+id="caseQuestion"
+class="case-question">
+</div>
+
+<div
+id="caseCross"
+class="case-cross">
+</div>
+
+
+<!-- PUNNETT SQUARE -->
+
+<div class="punnett-wrapper">
+
+<h3>
+🧬 Build the Punnett Square
+</h3>
+
+<p>
+
+Type the correct alleles into
+each box.
+
+</p>
+
+<table class="punnett-table">
+
+<tr>
+
+<th></th>
+
+<th>
+<span id="topGamete1">
+?
+</span>
+</th>
+
+<th>
+<span id="topGamete2">
+?
+</span>
+</th>
+
+</tr>
+
+<tr>
+
+<th>
+<span id="sideGamete1">
+?
+</span>
+</th>
+
+<td>
+
+<input
+class="allele-input"
+id="cell1"
+maxlength="2"
+autocomplete="off"
+>
+
+</td>
+
+<td>
+
+<input
+class="allele-input"
+id="cell2"
+maxlength="2"
+autocomplete="off"
+>
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>
+<span id="sideGamete2">
+?
+</span>
+</th>
+
+<td>
+
+<input
+class="allele-input"
+id="cell3"
+maxlength="2"
+autocomplete="off"
+>
+
+</td>
+
+<td>
+
+<input
+class="allele-input"
+id="cell4"
+maxlength="2"
+autocomplete="off"
+>
+
+</td>
+
+</tr>
+
+</table>
+
+<button
+class="main-button"
+onclick="checkPunnettSquare()">
+
+✅ Check Punnett Square
+
+</button>
+
+<div id="punnettFeedback">
+</div>
+
+</div>
+
+
+<!-- CASE QUESTION -->
+
+<div
+id="questionBox"
+class="question-box hidden">
+
+<h3>
+🔎 Solve the Case
+</h3>
+
+<p id="caseQuestion2">
+</p>
+
+<div
+id="caseOptions"
+class="options">
+</div>
+
+<button
+class="main-button"
+onclick="checkCaseAnswer()">
+
+🔎 Submit Answer
+
+</button>
+
+<div id="answerFeedback">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     COMPLETION
+========================================================= -->
+
+<div
+id="completion"
+class="section">
+
+<div class="completion">
+
+<h2>
+🎉 Mission Complete!
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+R = dominant allele
+&nbsp; | &nbsp;
+r = recessive allele
+
+</div>
+
+</div>
+
+
+<script>
+
+/* 
+/* =====================================================
+   GOOGLE APPS SCRIPT URL
+===================================================== */
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbyshiDplAGdTqcgu9yHV1-QINWX7kowi7sCK0rRjYZYJtd74JikR6TWiN585cDWoUKY/exec";
+
+/* =====================================================
+   YOUR FIVE IMAGE FILE IDs
+=====================================================
+
+   REPLACE ONLY THE TEXT INSIDE THE QUOTATION MARKS.
+
+===================================================== */
+
+const FLOWER_IMAGE_ID =
+"flower.jfif";
+
+const RABBIT_IMAGE_ID =
+"rabbits.jfif";
+
+const PLANT_IMAGE_ID =
+"plant.jfif";
+
+const FRECKLES_IMAGE_ID =
+"freckles.jpg";
+
+const DIMPLES_IMAGE_ID =
+"dimples.jpg";
+
+/* =====================================================
+IMAGE URL FUNCTION
+===================================================== */
+
+function getImageURL(filePath) {
+    return filePath;
+}
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let studentName = "";
+
+let currentCase = 0;
+
+let attempts = 3;
+
+let squareCompleted = false;
+
+let questionPassed = false;
+
+let caseScores = [0, 0, 0];
+
+/* =====================================================
+   CASE FILES
+===================================================== */
+
+const cases = [
+
+/* ==============================
+   CASE 1
+================================ */
+{
+
+    title:
+    "🌸 Purple Flowers",
+
+    image:
+    FLOWER_IMAGE_ID,
+
+    cross:
+    "Pp × Pp",
+
+    question:
+
+    `Purple flowers (P) are dominant
+    over white flowers (p).
+
+    <br><br>
+
+    Two purple-flowered plants have
+    the genotypes <strong>Pp × Pp</strong>.
+
+    <br><br>
+
+    Build the Punnett square and
+    determine the possible offspring.`,
+
+    answerQuestion:
+
+    "What percentage of the offspring will have white flowers?",
+
+    options: [
+
+        "0%",
+
+        "25%",
+
+        "50%",
+
+        "75%"
+
+    ],
+
+    answer: 1,
+
+    correctSquare: [
+
+        "PP",
+
+        "Pp",
+
+        "Pp",
+
+        "pp"
+
+    ]
+
+},
+
+
+/* CASE 2 */
+
+{
+
+    title:
+    "🐇 Black Rabbits",
+
+    image:
+    RABBIT_IMAGE_ID,
+
+    cross:
+    "Bb × bb",
+
+    question:
+
+    `Black fur (B) is dominant
+    over white fur (b).
+
+    <br><br>
+
+    A black rabbit with genotype
+    <strong>Bb</strong> is crossed with
+    a white rabbit with genotype
+    <strong>bb</strong>.
+
+    <br><br>
+
+    Build the Punnett square.`,
+
+    answerQuestion:
+
+    "What percentage of the offspring will have white fur?",
+
+    options: [
+
+        "25%",
+
+        "50%",
+
+        "75%",
+
+        "100%"
+
+    ],
+
+    answer: 1,
+
+    correctSquare: [
+
+        "Bb",
+
+        "Bb",
+
+        "bb",
+
+        "bb"
+
+    ]
+
+},
+
+
+/* CASE 3 */
+
+{
+
+    title:
+    "🌱 Tall Plants",
+
+    image:
+    PLANT_IMAGE_ID,
+
+    cross:
+    "TT × tt",
+
+    question:
+
+    `Tall stems (T) are dominant
+    over short stems (t).
+
+    <br><br>
+
+    A tall plant with genotype
+    <strong>TT</strong> is crossed with
+    a short plant with genotype
+    <strong>tt</strong>.
+
+    <br><br>
+
+    Build the Punnett square.`,
+
+    answerQuestion:
+
+    "What will be the genotype of all the offspring?",
+
+    options: [
+
+        "All TT",
+
+        "All Tt",
+
+        "50% TT and 50% tt",
+
+        "All tt"
+
+    ],
+
+    answer: 1,
+
+    correctSquare: [
+
+        "Tt",
+
+        "Tt",
+
+        "Tt",
+
+        "Tt"
+
+    ]
+
+},
+
+
+/* CASE 4 */
+
+{
+
+    title:
+    "😊 Freckles",
+
+    image:
+    FRECKLES_IMAGE_ID,
+
+    cross:
+    "Ff × ff",
+
+    question:
+
+    `In this example, freckles (F)
+    are dominant over no freckles (f).
+
+    <br><br>
+
+    One parent has genotype
+    <strong>Ff</strong> and the other
+    has genotype <strong>ff</strong>.
+
+    <br><br>
+
+    Build the Punnett square.`,
+
+    answerQuestion:
+
+    "What percentage of the offspring may have freckles?",
+
+    options: [
+
+        "0%",
+
+        "25%",
+
+        "50%",
+
+        "100%"
+
+    ],
+
+    answer: 2,
+
+    correctSquare: [
+
+        "Ff",
+
+        "Ff",
+
+        "ff",
+
+        "ff"
+
+    ]
+
+},
+
+
+/* CASE 5 */
+
+{
+
+    title:
+    "🔎 The Mystery Child",
+
+    image:
+    DIMPLES_IMAGE_ID,
+
+    cross:
+    "Dd × Dd",
+
+    question:
+
+    `Dimples (D) are dominant over
+    no dimples (d).
+
+    <br><br>
+
+    Both parents have dimples.
+    Their genotypes are <strong>Dd × Dd</strong>.
+
+    <br><br>
+
+    Build the Punnett square and
+    investigate whether they could
+    have a child without dimples.`,
+
+    answerQuestion:
+
+    "Can these parents have a child without dimples?",
+
+    options: [
+
+        "Yes, because dd can appear",
+
+        "No, because D is dominant",
+
+        "No, because both parents have dimples",
+
+        "Yes, but only if the child is DD"
+
+    ],
+
+    answer: 0,
+
+    correctSquare: [
+
+        "DD",
+
+        "Dd",
+
+        "Dd",
+
+        "dd"
+
+    ]
+
+}
+
+];
+
+
+/* =========================================================
+   START MISSION
+========================================================= */
+
+function startMission() {
+
+    const input =
+        document.getElementById(
+            "studentName"
+        );
+
+    const name =
+        input.value.trim();
+
+    if (name === "") {
+
+        alert(
+            "Please enter your full name before starting."
+        );
+
+        return;
+
+    }
+
+    studentName = name;
+
+    document
+        .getElementById(
+            "studentLogin"
+        )
+        .classList.remove(
+            "active"
+        );
+
+    document
+        .getElementById(
+            "navigation"
+        )
+        .classList.remove(
+            "hidden"
+        );
+
+    showSection(
+        "simulation"
+    );
+
+    currentCase = 0;
+
+    caseScores = [
+        0,
+        0,
+        0,
+        0,
+        0
+    ];
+
+}
+
+
+/* =========================================================
+   SIMULATION
+========================================================= */
+
+function getGametes(genotype) {
+
+    return [
+
+        genotype[0],
+
+        genotype[1]
+
+    ];
+
+}
+
+function normalize(a, b) {
+
+    if (
+        a === "R" &&
+        b === "r"
+    ) {
+
+        return "Rr";
+
+    }
+
+    if (
+        a === "r" &&
+        b === "R"
+    ) {
+
+        return "Rr";
+
+    }
+
+    return a + b;
+
+}
+
+function startPrediction() {
+
+    let p1 =
+        document.getElementById(
+            "parent1"
+        ).value;
+
+    let p2 =
+        document.getElementById(
+            "parent2"
+        ).value;
+
+    document.getElementById(
+        "predictionCross"
+    ).textContent =
+
+        p1 +
+        " × " +
+        p2;
+
+    document.getElementById(
+        "predictionBox"
+    ).classList.remove(
+        "hidden"
+    );
+
+    document.getElementById(
+        "simulationResult"
+    ).innerHTML = "";
+
+}
+
+function revealSimulation() {
+
+    let p1 =
+        document.getElementById(
+            "parent1"
+        ).value;
+
+    let p2 =
+        document.getElementById(
+            "parent2"
+        ).value;
+
+    let predictionRR =
+        Number(
+            document.getElementById(
+                "predictRR"
+            ).value
+        ) || 0;
+
+    let predictionRr =
+        Number(
+            document.getElementById(
+                "predictRr"
+            ).value
+        ) || 0;
+
+    let predictionrr =
+        Number(
+            document.getElementById(
+                "predictrr"
+            ).value
+        ) || 0;
+
+    let g1 =
+        getGametes(p1);
+
+    let g2 =
+        getGametes(p2);
+
+    let offspring = [
+
+        normalize(g1[0], g2[0]),
+
+        normalize(g1[0], g2[1]),
+
+        normalize(g1[1], g2[0]),
+
+        normalize(g1[1], g2[1])
+
+    ];
+
+    let RR =
+        offspring.filter(
+            x => x === "RR"
+        ).length;
+
+    let Rr =
+        offspring.filter(
+            x => x === "Rr"
+        ).length;
+
+    let rr =
+        offspring.filter(
+            x => x === "rr"
+        ).length;
+
+    let RRp =
+        RR * 25;
+
+    let Rrp =
+        Rr * 25;
+
+    let rrp =
+        rr * 25;
+
+    let dominant =
+        (RR + Rr) * 25;
+
+    let recessive =
+        rr * 25;
+
+    let correct =
+
+        predictionRR === RRp &&
+
+        predictionRr === Rrp &&
+
+        predictionrr === rrp;
+
+    let html = `
+
+        <div class="summary">
+
+            <div class="card">
+
+                <h3>
+                Genotypes
+                </h3>
+
+                <p>
+                RR:
+                <strong>
+                ${RRp}%
+                </strong>
+                </p>
+
+                <p>
+                Rr:
+                <strong>
+                ${Rrp}%
+                </strong>
+                </p>
+
+                <p>
+                rr:
+                <strong>
+                ${rrp}%
+                </strong>
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+                Phenotypes
+                </h3>
+
+                <p>
+                Dominant:
+                <strong>
+                ${dominant}%
+                </strong>
+                </p>
+
+                <p>
+                Recessive:
+                <strong>
+                ${recessive}%
+                </strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+
+    if (correct) {
+
+        html += `
+
+            <div class="success">
+
+                🎉 <strong>
+                Excellent prediction!
+                </strong>
+
+                <p>
+                Your prediction matches
+                the result of the cross.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+    else {
+
+        html += `
+
+            <div class="warning">
+
+                Your prediction does not
+                completely match the result.
+
+                <br><br>
+
+                Review the cross and try again.
+
+            </div>
+
+        `;
+
+    }
+
+    document.getElementById(
+        "simulationResult"
+    ).innerHTML = html;
+
+}
+
+
+/* =========================================================
+   OPEN CASES
+========================================================= */
+
+function openCases() {
+
+    showSection(
+        "cases"
+    );
+
+    loadCase();
+
+}
+
+
+/* =========================================================
+   LOAD CASE
+========================================================= */
+
+function loadCase() {
+
+    if (
+        currentCase >=
+        cases.length
+    ) {
+
+        showFinalResults();
+
+        return;
+
+    }
+
+    attempts = 3;
+
+    squareCompleted = false;
+
+    let data =
+        cases[currentCase];
+
+    const caseImage =
+        document.getElementById(
+            "caseImage"
+        );
+
+    if (data.image) {
+
+        caseImage.src =
+            getImageURL(data.image);
+
+        caseImage.style.display =
+            "block";
+
+    }
+
+    else {
+
+        caseImage.removeAttribute("src");
+
+        caseImage.style.display =
+            "none";
+
+    }
+
+    document.getElementById(
+        "caseNumber"
+    ).textContent =
+
+        "CASE FILE #" +
+
+        String(
+            currentCase + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    document.getElementById(
+        "caseTitle"
+    ).textContent =
+        data.title;
+
+    document.getElementById(
+        "caseQuestion"
+    ).innerHTML =
+        data.question;
+
+    document.getElementById(
+        "caseCross"
+    ).textContent =
+        data.cross;
+
+    let parents =
+        data.cross.split("×");
+
+    let parent1 =
+        parents[0].trim();
+
+    let parent2 =
+        parents[1].trim();
+
+    document.getElementById(
+        "topGamete1"
+    ).textContent =
+        parent2[0];
+
+    document.getElementById(
+        "topGamete2"
+    ).textContent =
+        parent2[1];
+
+    document.getElementById(
+        "sideGamete1"
+    ).textContent =
+        parent1[0];
+
+    document.getElementById(
+        "sideGamete2"
+    ).textContent =
+        parent1[1];
+
+    document
+        .querySelectorAll(
+            ".allele-input"
+        )
+        .forEach(
+            input => {
+
+                input.value = "";
+
+                input.disabled = false;
+
+                input.classList.remove(
+                    "cell-correct"
+                );
+
+                input.classList.remove(
+                    "cell-wrong"
+                );
+
+            }
+        );
+
+    document.getElementById(
+        "questionBox"
+    ).classList.add(
+        "hidden"
+    );
+
+    document.getElementById(
+        "punnettFeedback"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "answerFeedback"
+    ).innerHTML = "";
+
+    updateAttempts();
+
+    updateProgress();
+
+}
+
+
+/* =========================================================
+   CHECK PUNNETT SQUARE
+========================================================= */
+
+function checkPunnettSquare() {
+
+    let data =
+        cases[currentCase];
+
+    let inputs = [
+
+        document.getElementById(
+            "cell1"
+        ),
+
+        document.getElementById(
+            "cell2"
+        ),
+
+        document.getElementById(
+            "cell3"
+        ),
+
+        document.getElementById(
+            "cell4"
+        )
+
+    ];
+
+    let allCorrect = true;
+
+    inputs.forEach(
+        (
+            input,
+            index
+        ) => {
+
+            let studentAnswer =
+                input.value.trim();
+
+            let correctAnswer =
+                data.correctSquare[index];
+
+            if (
+                studentAnswer ===
+                correctAnswer
+            ) {
+
+                input.classList.remove(
+                    "cell-wrong"
+                );
+
+                input.classList.add(
+                    "cell-correct"
+                );
+
+            }
+
+            else {
+
+                input.classList.remove(
+                    "cell-correct"
+                );
+
+                input.classList.add(
+                    "cell-wrong"
+                );
+
+                allCorrect = false;
+
+            }
+
+        }
+    );
+
+    if (allCorrect) {
+
+        squareCompleted = true;
+
+        document.getElementById(
+            "punnettFeedback"
+        ).innerHTML = `
+
+            <div class="success">
+
+                🎉 <strong>
+                Punnett Square Complete!
+                </strong>
+
+                <p>
+                Excellent! You correctly
+                combined the alleles.
+                </p>
+
+                <p>
+                Now solve the case question.
+                </p>
+
+            </div>
+
+        `;
+
+        document.getElementById(
+            "questionBox"
+        ).classList.remove(
+            "hidden"
+        );
+
+        document.getElementById(
+            "caseQuestion2"
+        ).textContent =
+            data.answerQuestion;
+
+        let html = "";
+
+        data.options.forEach(
+            (
+                option,
+                index
+            ) => {
+
+                html += `
+
+                    <label class="option">
+
+                        <input
+                            type="radio"
+                            name="caseAnswer"
+                            value="${index}"
+                        >
+
+                        ${option}
+
+                    </label>
+
+                `;
+
+            }
+        );
+
+        document.getElementById(
+            "caseOptions"
+        ).innerHTML =
+            html;
+
+    }
+
+    else {
+
+        attempts--;
+
+        updateAttempts();
+
+        if (
+            attempts > 0
+        ) {
+
+            document.getElementById(
+                "punnettFeedback"
+            ).innerHTML = `
+
+                <div class="error">
+
+                    ❌ <strong>
+                    Not quite!
+                    </strong>
+
+                    <p>
+                    Check the cells marked
+                    in red.
+                    </p>
+
+                    <p>
+                    You have
+                    <strong>
+                    ${attempts}
+                    </strong>
+                    attempt(s) remaining.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+        else {
+
+            lockCase();
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   CHECK CASE QUESTION
+========================================================= */
+
+function checkCaseAnswer() {
+
+    if (!squareCompleted) {
+
+        return;
+
+    }
+
+    let selected =
+        document.querySelector(
+            'input[name="caseAnswer"]:checked'
+        );
+
+    if (!selected) {
+
+        document.getElementById(
+            "answerFeedback"
+        ).innerHTML = `
+
+            <div class="warning">
+
+                Please select an answer.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    let answer =
+        Number(
+            selected.value
+        );
+
+    let data =
+        cases[currentCase];
+
+    if (
+        answer ===
+        data.answer
+    ) {
+
+        let points = 0;
+
+        if (
+            attempts === 3
+        ) {
+
+            points = 10;
+
+        }
+
+        else if (
+            attempts === 2
+        ) {
+
+            points = 8;
+
+        }
+
+        else if (
+            attempts === 1
+        ) {
+
+            points = 6;
+
+        }
+
+        caseScores[currentCase] =
+            points;
+
+        document.getElementById(
+            "answerFeedback"
+        ).innerHTML = `
+
+            <div class="success">
+
+                🎉 <strong>
+                Case Solved!
+                </strong>
+
+                <p>
+                You earned
+                <strong>
+                ${points} points
+                </strong>
+                for this case!
+                </p>
+
+            </div>
+
+        `;
+
+        setTimeout(
+            () => {
+
+                currentCase++;
+
+                if (
+                    currentCase >=
+                    cases.length
+                ) {
+
+                    showFinalResults();
+
+                }
+
+                else {
+
+                    loadCase();
+
+                }
+
+            },
+            1800
+        );
+
+    }
+
+    else {
+
+        attempts--;
+
+        updateAttempts();
+
+        if (
+            attempts > 0
+        ) {
+
+            document.getElementById(
+                "answerFeedback"
+            ).innerHTML = `
+
+                <div class="error">
+
+                    ❌ <strong>
+                    Not quite!
+                    </strong>
+
+                    <p>
+                    Look at your completed
+                    Punnett square again.
+                    </p>
+
+                    <p>
+                    You have
+                    <strong>
+                    ${attempts}
+                    </strong>
+                    attempt(s) remaining.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+        else {
+
+            lockCase();
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   LOCK CASE
+========================================================= */
+
+function lockCase() {
+
+    caseScores[currentCase] =
+        0;
+
+    document.getElementById(
+        "punnettFeedback"
+    ).innerHTML = `
+
+        <div class="error">
+
+            🔒 <strong>
+            Case Locked
+            </strong>
+
+            <p>
+            You have used all three
+            attempts.
+            </p>
+
+            <p>
+            Return to the Simulation Lab
+            and review the concept before
+            trying again.
+            </p>
+
+            <button
+                class="main-button"
+                onclick="returnToSimulation()">
+
+                🔄 Return to Simulation Lab
+
+            </button>
+
+        </div>
+
+    `;
+
+    document.getElementById(
+        "questionBox"
+    ).classList.add(
+        "hidden"
+    );
+
+    document
+        .querySelectorAll(
+            ".allele-input"
+        )
+        .forEach(
+            input => {
+
+                input.disabled = true;
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   RETURN TO SIMULATION
+========================================================= */
+
+function returnToSimulation() {
+
+    document
+        .querySelectorAll(
+            ".allele-input"
+        )
+        .forEach(
+            input => {
+
+                input.disabled = false;
+
+            }
+        );
+
+    showSection(
+        "simulation"
+    );
+
+    document.getElementById(
+        "predictionBox"
+    ).classList.add(
+        "hidden"
+    );
+
+    document.getElementById(
+        "simulationResult"
+    ).innerHTML = `
+
+        <div class="warning">
+
+            <strong>
+            🔄 Review the Simulation
+            </strong>
+
+            <p>
+            Review how alleles from the
+            two parents combine to form
+            the genotype of an offspring.
+            </p>
+
+            <p>
+            When you are ready, return to
+            the Case Files.
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   ATTEMPTS
+========================================================= */
+
+function updateAttempts() {
+
+    let display = "";
+
+    for (
+        let i = 0;
+        i < attempts;
+        i++
+    ) {
+
+        display += "❤️ ";
+
+    }
+
+    for (
+        let i = attempts;
+        i < 3;
+        i++
+    ) {
+
+        display += "🖤 ";
+
+    }
+
+    document.getElementById(
+        "attempts"
+    ).textContent =
+        display;
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function updateProgress() {
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+
+        "Case " +
+        (currentCase + 1) +
+        " of 5";
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+
+        (
+            currentCase /
+            5 *
+            100
+        ) + "%";
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showSection(
+    sectionName
+) {
+
+    document
+        .querySelectorAll(
+            ".section"
+        )
+        .forEach(
+            section => {
+
+                section.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+    document.getElementById(
+        sectionName
+    ).classList.add(
+        "active"
+    );
+
+    document
+        .querySelectorAll(
+            ".nav-button"
+        )
+        .forEach(
+            button => {
+
+                button.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+    if (
+        sectionName ===
+        "simulation"
+    ) {
+
+        document
+            .querySelectorAll(
+                ".nav-button"
+            )[0]
+            .classList.add(
+                "active"
+            );
+
+    }
+
+    if (
+        sectionName ===
+        "cases"
+    ) {
+
+        document
+            .querySelectorAll(
+                ".nav-button"
+            )[1]
+            .classList.add(
+                "active"
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   FINAL RESULTS
+========================================================= */
+
+function showFinalResults() {
+
+    const total =
+        caseScores.reduce(
+            (
+                sum,
+                score
+            ) =>
+
+                sum + score,
+
+            0
+
+        );
+
+    const accuracy =
+        Math.round(
+            (
+                total /
+                50
+            ) * 100
+        );
+
+    showSection(
+        "completion"
+    );
+
+    document.getElementById(
+        "completion"
+    ).innerHTML = `
+
+        <div class="completion">
+
+            <h2>
+                🎉 Mission Complete!
+            </h2>
+
+            <p>
+                Congratulations,
+                <strong>
+                    ${studentName}
+                </strong>!
+            </p>
+
+            <div class="card"
+                 style="
+                    margin:25px auto;
+                    max-width:400px;
+                 ">
+
+                <h3>
+                    🏆 Final Score
+                </h3>
+
+                <h2>
+                    ${total} / 50
+                </h2>
+
+                <p>
+                    Accuracy:
+                    <strong>
+                        ${accuracy}%
+                    </strong>
+                </p>
+
+            </div>
+
+            <div class="summary">
+
+                <div class="card">
+
+                    <h3>
+                        Case Scores
+                    </h3>
+
+                    <p>
+                        Case 1:
+                        ${caseScores[0]} / 10
+                    </p>
+
+                    <p>
+                        Case 2:
+                        ${caseScores[1]} / 10
+                    </p>
+
+                    <p>
+                        Case 3:
+                        ${caseScores[2]} / 10
+                    </p>
+
+                    <p>
+                        Case 4:
+                        ${caseScores[3]} / 10
+                    </p>
+
+                    <p>
+                        Case 5:
+                        ${caseScores[4]} / 10
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                id="submissionStatus"
+                class="warning">
+
+                ⏳ Submitting your result...
+
+            </div>
+
+        </div>
+
+    `;
+
+    sendResults(
+        total,
+        accuracy
+    );
+
+}
+
+
+/* =========================================================
+   SEND RESULTS TO GOOGLE SHEETS
+========================================================= */
+
+function sendResults(
+    total,
+    accuracy
+) {
+
+    const data = {
+
+        name:
+            studentName,
+
+        case1:
+            caseScores[0],
+
+        case2:
+            caseScores[1],
+
+        case3:
+            caseScores[2],
+
+        case4:
+            caseScores[3],
+
+        case5:
+            caseScores[4],
+
+        total:
+            total,
+
+        accuracy:
+            accuracy
+
+    };
+
+    fetch(
+        GOOGLE_SCRIPT_URL,
+        {
+
+            method:
+                "POST",
+
+            mode:
+                "no-cors",
+
+            headers: {
+
+                "Content-Type":
+                    "text/plain;charset=utf-8"
+
+            },
+
+            body:
+                JSON.stringify(
+                    data
+                )
+
+        }
+
+    )
+
+    .then(
+        () => {
+
+            document.getElementById(
+                "submissionStatus"
+            ).className =
+                "success";
+
+            document.getElementById(
+                "submissionStatus"
+            ).innerHTML = `
+
+                ✅ <strong>
+                Result submitted!
+                </strong>
+
+                <p>
+                Your score has been recorded.
+                </p>
+
+            `;
+
+        }
+
+    )
+
+    .catch(
+        error => {
+
+            console.error(
+                error
+            );
+
+            document.getElementById(
+                "submissionStatus"
+            ).className =
+                "error";
+
+            document.getElementById(
+                "submissionStatus"
+            ).innerHTML = `
+
+                ⚠️ <strong>
+                Submission problem
+                </strong>
+
+                <p>
+                Please inform your teacher
+                that your result may not have
+                been recorded.
+                </p>
+
+            `;
+
+        }
+
+    );
+
+}
+
+
+/* =========================================================
+   ENTER KEY FOR NAME
+========================================================= */
+
+document
+    .getElementById(
+        "studentName"
+    )
+    .addEventListener(
+        "keypress",
+        function(event) {
+
+            if (
+                event.key ===
+                "Enter"
+            ) {
+
+                startMission();
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>
+```
